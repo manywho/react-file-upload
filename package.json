@@ -1,8 +1,8 @@
 {
-  "name": "@boomi/react-login-form",
+  "name": "@boomi/react-file-upload",
   "version": "0.1.0",
   "description": "A generic yet configurable stateless react component for a functioning login form",
-  "main": "dist/react-login-form.ts",
+  "main": "dist/react-file-upload.ts",
   "scripts": {
     "dist": "webpack",
     "preinstall": "webpack",
@@ -10,14 +10,14 @@
   },
   "repository": {
     "type": "git",
-    "url": "git+https://github.com/manywho/react-login-form.git"
+    "url": "git+https://github.com/manywho/react-file-upload.git"
   },
   "author": "Boomi Flow",
   "license": "MIT",
   "bugs": {
-    "url": "https://github.com/manywho/react-login-form/issues"
+    "url": "https://github.com/manywho/react-file-upload/issues"
   },
-  "homepage": "https://github.com/manywho/react-login-form#readme",
+  "homepage": "https://github.com/manywho/react-file-upload#readme",
   "devDependencies": {
     "@babel/core": "^7.4.3",
     "@babel/preset-env": "^7.4.3",
