@@ -6,7 +6,7 @@ module.exports = {
         extensions: ['.tsx', '.ts']
     },
     output: {
-        filename: 'react-login-form.js',
+        filename: 'react-file-upload.js',
         path: path.resolve(__dirname, 'dist')
     },
     module: {
