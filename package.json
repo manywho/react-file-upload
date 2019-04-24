@@ -1,0 +1,43 @@
+{
+  "name": "@boomi/react-login-form",
+  "version": "0.1.0",
+  "description": "A generic yet configurable stateless react component for a functioning login form",
+  "main": "dist/react-login-form.ts",
+  "scripts": {
+    "dist": "webpack",
+    "preinstall": "webpack",
+    "test": "test"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/manywho/react-login-form.git"
+  },
+  "author": "Boomi Flow",
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/manywho/react-login-form/issues"
+  },
+  "homepage": "https://github.com/manywho/react-login-form#readme",
+  "devDependencies": {
+    "@babel/core": "^7.4.3",
+    "@babel/preset-env": "^7.4.3",
+    "@babel/preset-react": "^7.0.0",
+    "@babel/preset-typescript": "^7.3.3",
+    "@types/enzyme": "^3.9.1",
+    "@types/jest": "^24.0.11",
+    "@types/react": "^16.8.14",
+    "babel-jest": "^24.7.1",
+    "babel-loader": "^8.0.5",
+    "enzyme": "^3.9.0",
+    "enzyme-adapter-react-16": "^1.12.1",
+    "jest": "^24.7.1",
+    "react-test-renderer": "^16.8.6",
+    "typescript": "^3.4.4",
+    "webpack": "^4.30.0",
+    "webpack-cli": "^3.3.1"
+  },
+  "dependencies": {
+    "react": "^16.8.6",
+    "react-dom": "^16.8.6"
+  }
+}
