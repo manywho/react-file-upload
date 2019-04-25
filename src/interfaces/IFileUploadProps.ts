@@ -1,31 +1,11 @@
 import IComponentProps from './IComponentProps';
 
-interface ModelDescription {
-    fileDataRequest: string;
-    attributes: string;
-    isAutoUpload: {
-        isAutoUpload: boolean;
-    };
-    label: string;
-    isRequired: boolean;
-    validationMessage?: string;
-    isVisible: boolean;
-    isValid?: boolean;
-    // backup in case multiple isn't defined
-    isMultiSelect: boolean;
-    hintValue: string;
-}
-
-interface getComponentModelFunction {
-    (id: string, flowKey: string): ModelDescription;
-}
-
-interface IFileStatus {
+export interface IFileStatus {
     fileName: string;
     uploadSuccessful: boolean;
 }
 
-interface IFileUploadState {
+export interface IFileUploadState {
     fileStatusList?: IFileStatus[];
     isUploadDisabled?: boolean;
     isFileSelected?: boolean;
@@ -35,25 +15,32 @@ interface IFileUploadState {
     progress?: number;
     error?: any;
     files?: any;
+    validationMessage?: string;
+    isValid?: boolean;
 }
 
-interface getComponentStateFunction {
-    (id: string, flowKey: string): IFileUploadState;
-}
-
-interface IFileUploadProps extends IComponentProps {
+export interface IFileUploadProps extends IComponentProps {
     multiple: boolean;
     upload: Function;
     uploadCaption?: string;
     uploadComplete?: Function;
     smallInputs?: boolean;
     isUploadVisible?: boolean;
-    getComponentModel: getComponentModelFunction;
-    getComponentState: getComponentStateFunction;
-    setComponentState: Function;
+    completedUpload: Function;
     getFileUploadMessage: Function;
     loggingFunction?: Function;
     handleEvent?: Function;
+    fileDataRequest: string;
+    isAutoUpload: boolean;
+    label: string;
+    isRequired: boolean;
+    validationMessage?: string;
+    isVisible: boolean;
+    isValid?: boolean;
+    // backup in case multiple isn't defined
+    isMultiSelect: boolean;
+    hintValue: string;
+    helpInfo: string;
 }
 
 export default IFileUploadProps;

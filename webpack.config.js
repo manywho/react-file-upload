@@ -1,21 +1,23 @@
 const path = require('path');
 
 module.exports = {
-    entry: './src/index.ts',
+    entry: './src/FileUpload.tsx',
     resolve: {
-        extensions: ['.tsx', '.ts']
+        extensions: ['.tsx', '.ts', '.js'],
     },
     output: {
         filename: 'react-file-upload.js',
-        path: path.resolve(__dirname, 'dist')
+        path: path.resolve(__dirname, 'dist'),
+        library: 'react-keyed-file-browser',
+        libraryTarget: 'umd',
     },
     module: {
         rules: [
             {
                 test: /\.tsx?$/,
                 use: 'babel-loader',
-                exclude: /node_modules/
+                exclude: /node_modules/,
             },
-        ]
-    }
-  };
+        ],
+    },
+};
