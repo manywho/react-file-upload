@@ -64,3 +64,6 @@ A basic string of text to be shown on the drop zone to prompt users to interact 
 
 ### helpInfo: string
 A permanent help message shown at the bottom of the component
+
+### disabled: boolean
+If the component is set to being disabled, then dropping files onto the drop zone and clicking the upload button will not function

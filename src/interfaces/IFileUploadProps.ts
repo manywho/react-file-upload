@@ -38,6 +38,7 @@ export interface IFileUploadProps extends IComponentProps {
     isValid?: boolean;
     hintValue: string;
     helpInfo: string;
+    disabled: boolean;
 }
 
 export default IFileUploadProps;

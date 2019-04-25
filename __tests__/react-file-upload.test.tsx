@@ -24,6 +24,7 @@ const props = {
     isValid: true,
     hintValue: "hintValue",
     helpInfo: "helpInfo",
+    disabled: false,
 }
 
 describe('File upload component behaviour', () => {

@@ -219,10 +219,10 @@ class FileUpload extends React.Component<IFileUploadProps, IFileUploadState> {
             disabled: 
                 this.state.isUploadDisabled || 
                 !this.state.isFileSelected || 
-                this.props.isDesignTime,
+                this.props.disabled,
         };
 
-        if (!this.props.isDesignTime) {
+        if (!this.props.disabled) {
             dropzoneProps.onDrop = this.onDrop;
             buttonProps.onClick = this.onUpload;
         }
