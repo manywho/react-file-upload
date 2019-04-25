@@ -210,9 +210,7 @@ class FileUpload extends React.Component<IFileUploadProps, IFileUploadState> {
 
         const dropzoneProps: any = {
             ref: 'upload',
-            multiple: this.isNullOrUndefined(this.props.multiple) ? 
-                this.props.isMultiSelect : 
-                this.props.multiple,
+            multiple: this.props.multiple,
             className: 'dropzone',
         };
 

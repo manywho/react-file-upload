@@ -1,5 +1,5 @@
 # react-file-upload
-A generic yet configurable react component for a functioning file upload.
+A generic yet configurable react component for a functioning file upload
 
 Props
 ### multiple: `boolean`
@@ -8,20 +8,7 @@ If multiple is `true`, then multiple files will be able to be uploaded at a time
 If multiple is `false`, then only one file can be uploaded at a time.
 
 ### upload: `Function`
-Function that performs the file upload.
-#### Parameters
-##### flowKey
-This is a Boomi Flow identifier that we use this to extract tenantId, authenticationToken and stateId.
-##### _
-Unused parameter
-##### onProgress
-Callback to recieve progress event info
-##### files
-List of files to be uploaded
-##### request
-Request payload data
-#### Returns
-An asynchronous HTTP (Ajax) request
+Function that performs the file upload
 
 ### uploadCaption (optional, default = "Upload"): `string`
 Caption on the upload button
@@ -38,51 +25,42 @@ If this is set to true, then the upload button will be set to small
 If this is true, the upload button will be visible.
 If this is false, the upload button will be hidden.
 
-### getComponentModel: `getComponentModelFunction`
-Function that returns the model of the file upload component.
-#### Parameters
-##### id
-The id of this component.
-##### flowKey
-This is a Boomi Flow identifier that we use this to extract tenantId, authenticationToken and stateId.
-#### Returns
-The "model" for this component, a set of options for how this component should render.
-*NOTE model definition will be written at a later date*
-
-### getComponentState: `getComponentStateFunction`
-Function that returns the state of the file upload component.
-#### Parameters
-##### id
-The id of this component.
-##### flowKey
-This is a Boomi Flow identifier that we use this to extract tenantId, authenticationToken and stateId.
-#### Returns
-The "state" for this component, a set of options for how this component should render.
-*NOTE state definition will be written at a later date*
-
-### setComponentState: `Function`
-Function that updates the state of the file upload component.
-#### Parameters
-##### id
-The id of this component.
-##### value
-The value and objectData that the component is storing.
-##### flowKey
-This is a Boomi Flow identifier that we use this to extract tenantId, authenticationToken and stateId.
-##### push
-An option to syncronize this component state to collaboration servers
+### completedUpload: `Function`
+Function to be called when an upload completes
 
 ### getFileUploadMessage (optional, default = model.hintValue): `Function`
-Function that returns the file upload message.
-#### Parameters
-##### flowKey
-This is a Boomi Flow identifier that we use this to extract tenantId, authenticationToken and stateId.
+Function that returns the string of text to be shown on the drop zone to prompt users to interact with the drop zone
 #### Returns
-A string of text to be shown on the drop zone to prompt users to interact with the drop zone.
+A string of text to be shown on the drop zone to prompt users to interact with the drop zone
 
 ### loggingFunction (optional, default = null): `Function`
 #### Parameters
-A string of text of what to log.
+A string of text of what to log
 
 ### handleEvent (optional, default = null): `Function`
-Function that is ran when a file is uploaded, and syncs with collaboration servers to update all users viewing the file upload component.
+Function that is ran when a file is uploaded, and syncs with collaboration servers to update all users viewing the file upload component
+
+### isAutoUpload: boolean
+If the file/s should be instantly uploaded after they are selected.
+If set to false, then an "Upload" button is needed to be pressed to confirm upload.
+
+### label: string
+The text for the label on the upload component
+
+### isRequired: boolean
+If set to true, a red required star wil appear on the component
+
+### validationMessage: string
+A message to help users input correct information, only shown when there are no errors
+
+### isVisible: boolean
+Whether the enitre component is visible or not
+
+### isValid: boolean
+If the the objectData this component is holding is valid or not
+
+### hintValue: string
+A basic string of text to be shown on the drop zone to prompt users to interact with the drop zone
+
+### helpInfo: string
+A permanent help message shown at the bottom of the component

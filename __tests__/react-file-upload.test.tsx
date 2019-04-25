@@ -22,7 +22,6 @@ const props = {
     validationMessage: "validationMessage",
     isVisible: true,
     isValid: true,
-    isMultiSelect: false,
     hintValue: "hintValue",
     helpInfo: "helpInfo",
 }

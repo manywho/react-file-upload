@@ -30,15 +30,12 @@ export interface IFileUploadProps extends IComponentProps {
     getFileUploadMessage: Function;
     loggingFunction?: Function;
     handleEvent?: Function;
-    fileDataRequest: string;
     isAutoUpload: boolean;
     label: string;
     isRequired: boolean;
     validationMessage?: string;
     isVisible: boolean;
     isValid?: boolean;
-    // backup in case multiple isn't defined
-    isMultiSelect: boolean;
     hintValue: string;
     helpInfo: string;
 }
