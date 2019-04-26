@@ -1,7 +1,50 @@
-# react-file-upload
-A generic yet configurable react component for a functioning file upload
+# @boomi/react-file-upload
 
-Props
+[![npm (scoped)](https://img.shields.io/npm/v/@boomi/react-file-upload.svg?style=flat-square)](https://www.npmjs.com/package/@boomi/react-file-upload)
+
+> A generic yet configurable react component for a functioning file upload.
+
+## Getting Started
+### Installation
+
+```sh
+npm install --save @boomi/react-file-upload
+```
+
+### Usage
+
+```js
+import FileUpload from '@boomi/react-file-upload';
+```
+
+#### Minimum required setup
+
+```js
+<FileUpload />
+```
+
+## Contributing
+
+To contribute to this project you can submit a pull request.
+
+### Local development setup
+
+* Clone this repository
+* `npm install`
+* `npm link`
+* `npm start`
+
+Then inside your own local project:
+* `npm link @boomi/react-file-upload`
+* And follow usage instructions decribed above
+
+#### Running Jest tests
+
+```sh
+npm run test
+```
+
+## Component props
 ### multiple: `boolean`
 This file upload component can accept single or multiple file uploads.
 If multiple is `true`, then multiple files will be able to be uploaded at a time.
