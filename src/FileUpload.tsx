@@ -7,6 +7,7 @@ import { IFileUploadProps, IFileUploadState, IFileStatus } from './interfaces/IF
 class FileUpload extends React.Component<IFileUploadProps, IFileUploadState> {
 
     static defaultProps = {
+        hintValue: 'Drag and drop some files here, or click to select files',
         uploadCaption: 'Upload',
         browseCaption: 'Browse',
         smallInputs: false,
@@ -231,9 +232,7 @@ class FileUpload extends React.Component<IFileUploadProps, IFileUploadState> {
             buttonProps.onClick = this.onUpload;
         }
 
-        const hintMessage = this.isNullOrWhitespace(this.props.hintValue)
-            ? this.props.getFileUploadMessage
-            : this.props.hintValue;
+        const hintMessage = this.props.hintValue;
 
         return <div className={componentClassName} id={this.props.id}>
             <div className="clearfix">

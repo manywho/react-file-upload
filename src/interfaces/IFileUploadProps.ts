@@ -27,7 +27,6 @@ export interface IFileUploadProps extends IComponentProps {
     smallInputs?: boolean;
     isUploadVisible?: boolean;
     completedUpload: Function;
-    getFileUploadMessage: Function;
     loggingFunction?: Function;
     handleEvent?: Function;
     isAutoUpload: boolean;
@@ -36,7 +35,7 @@ export interface IFileUploadProps extends IComponentProps {
     validationMessage?: string;
     isVisible: boolean;
     isValid?: boolean;
-    hintValue: string;
+    hintValue?: string;
     helpInfo: string;
     disabled: boolean;
 }

@@ -28,11 +28,6 @@ If this is false, the upload button will be hidden.
 ### completedUpload: `Function`
 Function to be called when an upload completes
 
-### getFileUploadMessage (optional, default = model.hintValue): `Function`
-Function that returns the string of text to be shown on the drop zone to prompt users to interact with the drop zone
-#### Returns
-A string of text to be shown on the drop zone to prompt users to interact with the drop zone
-
 ### loggingFunction (optional, default = null): `Function`
 #### Parameters
 A string of text of what to log
@@ -59,7 +54,7 @@ Whether the enitre component is visible or not
 ### isValid: boolean
 If the the objectData this component is holding is valid or not
 
-### hintValue: string
+### hintValue (optional, default = "Drag 'n' drop some files here, or click to select files"): string
 A basic string of text to be shown on the drop zone to prompt users to interact with the drop zone
 
 ### helpInfo: string
