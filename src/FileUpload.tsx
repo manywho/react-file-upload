@@ -16,6 +16,8 @@ class FileUpload extends React.Component<IFileUploadProps, IFileUploadState> {
         handleEvent: null,
     };
 
+    uploadRef: any;
+
     constructor(props) {
         super(props);
 
@@ -29,6 +31,8 @@ class FileUpload extends React.Component<IFileUploadProps, IFileUploadState> {
             error: null,
             isValid: true,
         };
+
+        this.uploadRef = React.createRef();
     }
 
     /**
@@ -96,8 +100,8 @@ class FileUpload extends React.Component<IFileUploadProps, IFileUploadState> {
                     2000,
                 );
 
-                (findDOMNode(this.refs.upload) as HTMLInputElement).value = '';
-
+                (findDOMNode(this.uploadRef) as HTMLInputElement).value = '';
+                
                 if (this.props.uploadComplete) {
                     this.props.uploadComplete(response);
                 } else if (
@@ -209,7 +213,7 @@ class FileUpload extends React.Component<IFileUploadProps, IFileUploadState> {
         }
 
         const dropzoneProps: any = {
-            ref: 'upload',
+            ref: this.uploadRef,
             multiple: this.props.multiple,
             className: 'dropzone',
         };

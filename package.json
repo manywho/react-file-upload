@@ -5,7 +5,6 @@
     "main": "dist/react-file-upload.js",
     "scripts": {
         "dist": "webpack",
-        "preinstall": "webpack",
         "test": "test"
     },
     "repository": {
@@ -45,9 +44,11 @@
         "ts-jest": "^24.0.2",
         "typescript": "^3.4.4",
         "webpack": "^4.30.0",
-        "webpack-cli": "^3.3.1"
+        "webpack-cli": "^3.3.1",
+        "react": "^16.8.6",
+        "react-dom": "^16.8.6"
     },
-    "dependencies": {
+    "peerDependencies": {
         "react": "^16.8.6",
         "react-dom": "^16.8.6"
     },
