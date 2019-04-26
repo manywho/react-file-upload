@@ -5,7 +5,10 @@
     "main": "dist/react-file-upload.js",
     "scripts": {
         "dist": "webpack",
-        "test": "test"
+        "start": "webpack --watch=true",
+        "test": "jest",
+        "prepublishOnly": "npm run dist",
+        "prepack": "npm run dist"
     },
     "repository": {
         "type": "git",
@@ -17,6 +20,9 @@
         "url": "https://github.com/manywho/react-file-upload/issues"
     },
     "homepage": "https://github.com/manywho/react-file-upload#readme",
+    "publishConfig": {
+        "access": "public"
+    },
     "devDependencies": {
         "@babel/core": "^7.4.3",
         "@babel/preset-env": "^7.4.3",
