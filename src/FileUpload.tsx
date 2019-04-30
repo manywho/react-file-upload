@@ -1,6 +1,5 @@
 ﻿import * as React from 'react';
 import { findDOMNode } from 'react-dom';
-// tslint:disable-next-line
 import Dropzone from 'react-dropzone';
 import { IFileUploadProps, IFileUploadState, IFileStatus } from './interfaces/IFileUploadProps';
 
@@ -147,18 +146,21 @@ class FileUpload extends React.Component<IFileUploadProps, IFileUploadState> {
     }
 
     onDrop = (files) => {
-        this.onFileSelected(files);
+        if (!this.props.disabled)
+            this.onFileSelected(files);
     }
 
     onFileSelected = (files) => {
-        this.setState({
-            files,
-            fileNames: Array.prototype.slice.call(files).map(file => file.name),
-            isFileSelected: true,
-        });
+        if (!this.props.disabled) {
+            this.setState({
+                files,
+                fileNames: Array.prototype.slice.call(files).map(file => file.name),
+                isFileSelected: true,
+            });
 
-        if (this.props.isAutoUpload)
-            setTimeout(this.onUpload.bind(this));
+            if (this.props.isAutoUpload)
+                setTimeout(this.onUpload.bind(this));
+        }
     }
 
     render() {
