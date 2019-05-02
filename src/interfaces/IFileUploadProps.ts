@@ -26,7 +26,6 @@ export interface IFileUploadProps {
     smallInputs?: boolean;
     isUploadVisible?: boolean;
     completedUpload: Function;
-    loggingFunction?: Function;
     handleEvent?: Function;
     isAutoUpload: boolean;
     label: string;

@@ -74,10 +74,6 @@ If this is false, the upload button will be hidden.
 ### completedUpload: `Function`
 Function to be called when an upload completes
 
-### loggingFunction (optional, default = null): `Function`
-Function to be called when the FileUpload renders.
-This function is given "Rendering File Upload: ${this.props.id}"
-
 ### handleEvent (optional, default = null): `Function`
 Function that is ran when a file is uploaded, and syncs with collaboration servers to update all users viewing the file upload component
 

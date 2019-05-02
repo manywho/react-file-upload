@@ -164,10 +164,6 @@ class FileUpload extends React.Component<IFileUploadProps, IFileUploadState> {
     }
 
     render() {
-        if (this.props.loggingFunction) {
-            this.props.loggingFunction(`Rendering File Upload: ${this.props.id}`);
-        }
-
         const progress = (this.state.progress || 0) + '%';
         
         let uploadClassName = 'btn btn-primary';
