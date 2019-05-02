@@ -30,6 +30,7 @@ class FileUpload extends React.Component<IFileUploadProps, IFileUploadState> {
             fileNames: [],
             error: null,
             isValid: true,
+            files: [],
         };
 
         this.uploadRef = React.createRef();
@@ -53,7 +54,6 @@ class FileUpload extends React.Component<IFileUploadProps, IFileUploadState> {
         return value.replace(/\s/g, '').length < 1;
     };
 
-
     onUpload = () => {
         if (this.state.fileNames.length > 0) {
             this.setState({
@@ -74,7 +74,7 @@ class FileUpload extends React.Component<IFileUploadProps, IFileUploadState> {
                     }
                 }
             )
-            .done((response) => {
+            .then((response) => {
 
                 const newFileStatuses: IFileStatus[] = this.state.fileNames.map(
                     fileName => ({ fileName, uploadSuccessful: true }),
@@ -126,7 +126,7 @@ class FileUpload extends React.Component<IFileUploadProps, IFileUploadState> {
                     }
                 }
             })
-            .fail((response) => {
+            .catch((response) => {
 
                 const newFileStatuses: IFileStatus[] = this.state.fileNames.map(
                     fileName => ({ fileName, uploadSuccessful: false }),
@@ -145,7 +145,7 @@ class FileUpload extends React.Component<IFileUploadProps, IFileUploadState> {
         }
     }
 
-    onDrop = (files) => {
+    onDrop(files) {
         if (!this.props.disabled)
             this.onFileSelected(files);
     }

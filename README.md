@@ -45,6 +45,10 @@ npm run test
 ```
 
 ## Component props
+### id: `string`
+This is a unique identifier for this component.
+Passed into completedUpload, handleEvent and logging functions.
+
 ### multiple: `boolean`
 This file upload component can accept single or multiple file uploads.
 If multiple is `true`, then multiple files will be able to be uploaded at a time.

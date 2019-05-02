@@ -1,5 +1,3 @@
-import IComponentProps from './IComponentProps';
-
 export interface IFileStatus {
     fileName: string;
     uploadSuccessful: boolean;
@@ -19,7 +17,8 @@ export interface IFileUploadState {
     isValid?: boolean;
 }
 
-export interface IFileUploadProps extends IComponentProps {
+export interface IFileUploadProps {
+    id: string;
     multiple: boolean;
     upload: Function;
     uploadCaption?: string;
