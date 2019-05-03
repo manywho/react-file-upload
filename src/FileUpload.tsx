@@ -13,7 +13,6 @@ class FileUpload extends React.Component<IFileUploadProps, IFileUploadState> {
         isUploadVisible: true,
         uploadComplete: null,
         loggingFunction: null,
-        handleEvent: null,
     };
 
     uploadRef: any;
@@ -104,26 +103,6 @@ class FileUpload extends React.Component<IFileUploadProps, IFileUploadState> {
                 
                 if (this.props.uploadComplete) {
                     this.props.uploadComplete(response);
-                } else if (
-                    !this.props.uploadComplete && response && 
-                    !this.isNullOrWhitespace(this.props.id)
-                ) {
-                    const objectData = response.objectData.map((item) => {
-                        item.isSelected = true;
-                        return item;
-                    });
-
-                    this.props.completedUpload(
-                        this.props.id,
-                        { objectData }
-                    );
-
-                    if (this.props.handleEvent) {
-                        this.props.handleEvent(
-                            this,
-                            this.props.id
-                        );
-                    }
                 }
             })
             .catch((response) => {

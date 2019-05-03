@@ -47,7 +47,6 @@ npm run test
 ## Component props
 ### id: `string`
 This is a unique identifier for this component.
-Passed into completedUpload, handleEvent and logging functions.
 
 ### multiple: `boolean`
 This file upload component can accept single or multiple file uploads.
@@ -65,33 +64,28 @@ Function to be called when an upload is completed.
 This function is given the response from a successful upload made using the provided upload function.
 
 ### smallInputs (optional, default = false): `boolean`
-If this is set to true, then the upload button will be set to small
+If this is set to `true`, then the upload button will be given a css class to render as a bootstrap small button.
+(NOTE: this component doesn't come with bootstrap, you will have to set it up manually)
 
 ### isUploadVisible (optional, default = true): `boolean`
-If this is true, the upload button will be visible.
-If this is false, the upload button will be hidden.
-
-### completedUpload: `Function`
-Function to be called when an upload completes
-
-### handleEvent (optional, default = null): `Function`
-Function that is ran when a file is uploaded, and syncs with collaboration servers to update all users viewing the file upload component
+If this is `true`, the upload button will be visible.
+If this is `false`, the upload button will be hidden.
 
 ### isAutoUpload: `boolean`
 If the file/s should be instantly uploaded after they are selected.
-If set to false, then an "Upload" button is needed to be pressed to confirm upload.
+If set to `false`, then an "Upload" button is needed to be pressed to confirm upload.
 
 ### label: `string`
 The text for the label on the upload component
 
 ### isRequired: `boolean`
-If set to true, a red required star wil appear on the component
+If set to `true`, a red required star will appear on the component
 
 ### validationMessage: `string`
 A message to help users input correct information, only shown when there are no errors
 
 ### isVisible: `boolean`
-Whether the enitre component is visible or not
+Whether the entire component is visible or not
 
 ### isValid: `boolean`
 If the the objectData this component is holding is valid or not
