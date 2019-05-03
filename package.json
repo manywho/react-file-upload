@@ -41,14 +41,13 @@
         "enzyme": "^3.9.0",
         "enzyme-adapter-react-16": "^1.12.1",
         "eslint": "^5.16.0",
-        "eslint-config-airbnb-typescript": "^3.0.0",
+        "eslint-config-airbnb-typescript": "^1.0.0",
         "eslint-plugin-import": "^2.17.2",
         "eslint-plugin-jsx-a11y": "^6.2.1",
         "eslint-plugin-react": "^7.12.4",
         "husky": "^1.3.1",
         "jest": "^24.7.1",
         "lint-staged": "^8.1.5",
-        "react-dropzone": "^4.2.10",
         "react-test-renderer": "^16.8.6",
         "ts-jest": "^24.0.2",
         "typescript": "^3.4.4",
@@ -60,6 +59,9 @@
     "peerDependencies": {
         "react": "^16.8.6",
         "react-dom": "^16.8.6"
+    },
+    "dependencies": {
+        "react-dropzone": "^4.2.10"
     },
     "jest": {
         "setupFiles": [

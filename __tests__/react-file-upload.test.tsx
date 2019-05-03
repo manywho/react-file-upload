@@ -6,7 +6,7 @@ const props = {
     id: '0',
     multiple: false,
     upload: jest.fn(() => Promise.resolve()),
-    uploadCaption: "uploadCaption",
+    uploadCaption: 'uploadCaption',
     uploadComplete: jest.fn(),
     smallInputs: false,
     isUploadVisible: true,
@@ -16,25 +16,25 @@ const props = {
     handleEvent: jest.fn(),
     
     completedUpload: jest.fn(),
-    fileDataRequest: "fileDataRequest",
+    fileDataRequest: 'fileDataRequest',
     isAutoUpload: false,
-    label: "label",
+    label: 'label',
     isRequired: true,
-    validationMessage: "validationMessage",
+    validationMessage: 'validationMessage',
     isVisible: true,
     isValid: true,
-    hintValue: "hintValue",
-    helpInfo: "helpInfo",
+    hintValue: 'hintValue',
+    helpInfo: 'helpInfo',
     disabled: false,
-}
+};
 
 const enzyme = require('enzyme');
 const Adapter = require('enzyme-adapter-react-16');
 
 enzyme.configure({ adapter: new Adapter() });
 
-const testfile = [{ name: "testfile" }];
-const testfiles = [{ name: "testfile1" }, { name: "testfile2" }];
+const testfile = [{ name: 'testfile' }];
+const testfiles = [{ name: 'testfile1' }, { name: 'testfile2' }];
 
 describe('File upload component behaviour', () => {
     test('Component renders without crashing', () => {
@@ -69,14 +69,18 @@ describe('File upload component behaviour', () => {
 
         wrapper.setState({ fileNames: testfiles.map(file => file.name), files: testfiles });
         expect.assertions(6);
-        return (wrapper as any).instance().onUpload().then( () => {
-                expect(wrapper.state('fileStatusList')).toEqual([{fileName: "testfile1", uploadSuccessful: true}, {fileName: "testfile2", uploadSuccessful: true}]);
+        return (wrapper as any).instance().onUpload().then(
+            () => {
+                expect(wrapper.state('fileStatusList')).toEqual([
+                    { fileName: 'testfile1', uploadSuccessful: true },
+                    { fileName: 'testfile2', uploadSuccessful: true },
+                ]);
                 expect(wrapper.state('fileNames')).toEqual([]);
                 expect(wrapper.state('isUploadDisabled')).toBeFalsy();
                 expect(wrapper.state('isFileSelected')).toBeFalsy();
                 expect(wrapper.state('isUploadComplete')).toBeTruthy();
                 expect(wrapper.state('error')).toBeFalsy();
-            }
+            },
         );
     });
     
@@ -92,20 +96,24 @@ describe('File upload component behaviour', () => {
     });
 
     test('Test that upload deals with a failure correctly', () => {
-        const mockUpload = jest.fn(() => Promise.reject({ statusText: "testError" }));
+        const mockUpload = jest.fn(() => Promise.reject({ statusText: 'testError' }));
         props.upload = mockUpload;
         const wrapper = shallow(<FileUpload {...props} />);
 
         wrapper.setState({ fileNames: testfiles.map(file => file.name), files: testfiles });
         expect.assertions(6);
-        return (wrapper as any).instance().onUpload().then( () => {
-                expect(wrapper.state('fileStatusList')).toEqual([{fileName: "testfile1", uploadSuccessful: false}, {fileName: "testfile2", uploadSuccessful: false}]);
-                expect(wrapper.state('fileNames')).toEqual(["testfile1", "testfile2"]);
+        return (wrapper as any).instance().onUpload().then(
+            () => {
+                expect(wrapper.state('fileStatusList')).toEqual([
+                    { fileName: 'testfile1', uploadSuccessful: false },
+                    { fileName: 'testfile2', uploadSuccessful: false },
+                ]);
+                expect(wrapper.state('fileNames')).toEqual(['testfile1', 'testfile2']);
                 expect(wrapper.state('isUploadDisabled')).toBeFalsy();
                 expect(wrapper.state('isFileSelected')).toBeFalsy();
                 expect(wrapper.state('isUploadComplete')).toBeFalsy();
-                expect(wrapper.state('error')).toEqual("testError");
-            }
+                expect(wrapper.state('error')).toEqual('testError');
+            },
         );
     });
 

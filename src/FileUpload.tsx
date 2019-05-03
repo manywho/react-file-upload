@@ -15,8 +15,6 @@ class FileUpload extends React.Component<IFileUploadProps, IFileUploadState> {
         loggingFunction: null,
     };
 
-    uploadRef: any;
-
     constructor(props) {
         super(props);
 
@@ -28,30 +26,12 @@ class FileUpload extends React.Component<IFileUploadProps, IFileUploadState> {
             isUploadComplete: false,
             fileNames: [],
             error: null,
-            isValid: true,
             files: [],
         };
 
         this.uploadRef = React.createRef();
     }
 
-    /**
-    * Check if a value is `null` or `undefined`
-    */
-    isNullOrUndefined = (value: any): boolean => {
-        return typeof value === 'undefined' || value === null;
-    };
-
-    /**
-    * Check if a string is `null` or only contains whitespace
-    */
-    isNullOrWhitespace = (value: string): boolean => {
-        if (this.isNullOrUndefined(value)) {
-            return true;
-        }
-
-        return value.replace(/\s/g, '').length < 1;
-    };
 
     onUpload = () => {
         if (this.state.fileNames.length > 0) {
@@ -71,10 +51,8 @@ class FileUpload extends React.Component<IFileUploadProps, IFileUploadState> {
                             progress: parseInt((loaded / total * 100).toString(), 10),
                         });
                     }
-                }
-            )
-            .then((response) => {
-
+                },
+            ).then((response) => {
                 const newFileStatuses: IFileStatus[] = this.state.fileNames.map(
                     fileName => ({ fileName, uploadSuccessful: true }),
                 );
@@ -104,9 +82,7 @@ class FileUpload extends React.Component<IFileUploadProps, IFileUploadState> {
                 if (this.props.uploadComplete) {
                     this.props.uploadComplete(response);
                 }
-            })
-            .catch((response) => {
-
+            }).catch((response) => {
                 const newFileStatuses: IFileStatus[] = this.state.fileNames.map(
                     fileName => ({ fileName, uploadSuccessful: false }),
                 );
@@ -122,11 +98,13 @@ class FileUpload extends React.Component<IFileUploadProps, IFileUploadState> {
                 });
             });
         }
+        return null;
     }
 
     onDrop(files) {
-        if (!this.props.disabled)
+        if (!this.props.disabled) {
             this.onFileSelected(files);
+        }
     }
 
     onFileSelected = (files) => {
@@ -137,13 +115,32 @@ class FileUpload extends React.Component<IFileUploadProps, IFileUploadState> {
                 isFileSelected: true,
             });
 
-            if (this.props.isAutoUpload)
+            if (this.props.isAutoUpload) {
                 setTimeout(this.onUpload.bind(this));
+            }
         }
     }
+    
+    /**
+    * Check if a value is `null` or `undefined`
+    */
+    isNullOrUndefined = (value: any): boolean => typeof value === 'undefined' || value === null;
+
+    /**
+    * Check if a string is `null` or only contains whitespace
+    */
+    isNullOrWhitespace = (value: string): boolean => {
+        if (this.isNullOrUndefined(value)) {
+            return true;
+        }
+
+        return value.replace(/\s/g, '').length < 1;
+    };
+
+    uploadRef: any;
 
     render() {
-        const progress = (this.state.progress || 0) + '%';
+        const progress = `${this.state.progress || 0}%`;
         
         let uploadClassName = 'btn btn-primary';
         let inputClassName = 'form-control filenames';
@@ -155,13 +152,15 @@ class FileUpload extends React.Component<IFileUploadProps, IFileUploadState> {
             inputClassName += ' input-sm';
         }
 
-        if (!this.props.isUploadVisible)
+        if (!this.props.isUploadVisible) { 
             uploadClassName += ' hidden';
+        }
 
-        if (this.state.isUploadComplete)
+        if (this.state.isUploadComplete) {
             progressClassName += ' progress-bar-success';
+        }
 
-        let label = 
+        const label = (
             <label>
                 {this.props.label}
                 {
@@ -169,22 +168,26 @@ class FileUpload extends React.Component<IFileUploadProps, IFileUploadState> {
                         <span className="input-required"> *</span> : 
                         null
                 }
-            </label>;
+            </label>
+        );
 
-        let validationMessage = 
+        let validationMessage = (
             <span className="help-block">
-            {
-                this.props.validationMessage
-            }
-        </span>;
+                {
+                    this.props.validationMessage
+                }
+            </span>
+        );
 
-        let helpInfo = <span className="help-block">{this.props.helpInfo}</span>;
+        const helpInfo = <span className="help-block">{this.props.helpInfo}</span>;
 
-        if (this.props.isVisible === false)
+        if (this.props.isVisible === false) {
             componentClassName += ' hidden';
+        }
 
-        if (this.props.isValid === false)
+        if (this.props.isValid === false) {
             componentClassName += ' has-error';
+        }
 
         if (this.state.error) {
             validationMessage = <span className="has-error"><span className="help-block">{this.state.error}</span></span>;
@@ -211,43 +214,44 @@ class FileUpload extends React.Component<IFileUploadProps, IFileUploadState> {
 
         const hintMessage = this.props.hintValue;
 
-        return <div className={componentClassName} id={this.props.id}>
-            <div className="clearfix">
-                {label}
-                <Dropzone {...dropzoneProps}>
-                    <div>{ hintMessage }</div>
-                </Dropzone>
-                <div className={'input-group ' + ((this.props.isAutoUpload) ? 'hidden' : '')}>
-                    <input type="text" 
-                        className={inputClassName} 
-                        readOnly={true} 
-                        value={this.state.fileNames.join(' ')} />
-                    <span className="input-group-btn">
-                        <button {...buttonProps}>{this.props.uploadCaption}</button>
-                    </span>
+        return (
+            <div className={componentClassName} id={this.props.id}>
+                <div className="clearfix">
+                    {label}
+                    <Dropzone {...dropzoneProps}>
+                        <div>{ hintMessage }</div>
+                    </Dropzone>
+                    <div className={`input-group ${(this.props.isAutoUpload) ? 'hidden' : ''}`}>
+                        <input
+                            type="text" 
+                            className={inputClassName} 
+                            readOnly
+                            value={this.state.fileNames.join(' ')} 
+                        />
+                        <span className="input-group-btn">
+                            <button {...buttonProps}>{this.props.uploadCaption}</button>
+                        </span>
+                    </div>
                 </div>
-            </div>
-            <div className={
-                'progress files-progress ' + ((this.state.isProgressVisible) ? '' : 'hidden')
-                }>
-                <div className={progressClassName} style={{ width: progress }} />
-            </div>
-            {validationMessage}
-            <ul className="file-statuses">
-                {
-                    this.state.fileStatusList.map((fileStatus, index) => (
-                        <li key={index} className={fileStatus.uploadSuccessful ? 'has-success' : 'has-error'}>
-                            <span className="help-block">
-                                <span className={`glyphicon glyphicon-${fileStatus.uploadSuccessful ? 'ok' : 'remove'}`}>
+                <div className={`progress files-progress ${((this.state.isProgressVisible) ? '' : 'hidden')}`}>
+                    <div className={progressClassName} style={{ width: progress }} />
+                </div>
+                {validationMessage}
+                <ul className="file-statuses">
+                    {
+                        this.state.fileStatusList.map((fileStatus, index) => (
+                            <li key={index} className={fileStatus.uploadSuccessful ? 'has-success' : 'has-error'}>
+                                <span className="help-block">
+                                    <span className={`glyphicon glyphicon-${fileStatus.uploadSuccessful ? 'ok' : 'remove'}`} />
+                                    { fileStatus.fileName }
                                 </span>
-                                { fileStatus.fileName }
-                            </span>
-                        </li>
-                    ))
-                }
-            </ul>
-            {helpInfo}
-        </div>;
+                            </li>
+                        ))
+                    }
+                </ul>
+                {helpInfo}
+            </div>
+        );
     }
 
 }

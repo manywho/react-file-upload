@@ -52,6 +52,7 @@
         "react/button-has-type": 0,
         "jsx-a11y/label-has-associated-control": 0,
         "jsx-a11y/label-has-for": 0,
-        "react/no-array-index-key": 0
+        "react/no-array-index-key": 0,
+        "curly": "error"
     }
 }

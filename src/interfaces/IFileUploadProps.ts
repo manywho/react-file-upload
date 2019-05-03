@@ -13,8 +13,6 @@ export interface IFileUploadState {
     progress?: number;
     error?: any;
     files?: any;
-    validationMessage?: string;
-    isValid?: boolean;
 }
 
 export interface IFileUploadProps {
