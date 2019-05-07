@@ -96,7 +96,7 @@ describe('File upload component behaviour', () => {
     });
 
     test('Test that upload deals with a failure correctly', () => {
-        const mockUpload = jest.fn(() => Promise.reject({ statusText: 'testError' }));
+        const mockUpload = jest.fn(() => Promise.reject(Error('testError')));
         props.upload = mockUpload;
         const wrapper = shallow(<FileUpload {...props} />);
 

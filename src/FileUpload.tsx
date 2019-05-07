@@ -1,5 +1,4 @@
 ﻿import * as React from 'react';
-import { findDOMNode } from 'react-dom';
 import Dropzone from 'react-dropzone';
 import { IFileUploadProps, IFileUploadState, IFileStatus } from './interfaces/IFileUploadProps';
 
@@ -28,8 +27,6 @@ class FileUpload extends React.Component<IFileUploadProps, IFileUploadState> {
             error: null,
             files: [],
         };
-
-        this.uploadRef = React.createRef();
     }
 
 
@@ -76,8 +73,6 @@ class FileUpload extends React.Component<IFileUploadProps, IFileUploadState> {
                     }, 
                     2000,
                 );
-
-                (findDOMNode(this.uploadRef) as HTMLInputElement).value = '';
                 
                 if (this.props.uploadComplete) {
                     this.props.uploadComplete(response);
@@ -94,19 +89,15 @@ class FileUpload extends React.Component<IFileUploadProps, IFileUploadState> {
                     isUploadDisabled: false,
                     isProgressVisible: false,
                     progress: 0,
-                    error: response.statusText,
+                    error: response.statusText ? response.statusText :
+                        response.message ? response.message :
+                            response.toString(),
                 });
             });
         }
         return null;
     }
-
-    onDrop(files) {
-        if (!this.props.disabled) {
-            this.onFileSelected(files);
-        }
-    }
-
+    
     onFileSelected = (files) => {
         if (!this.props.disabled) {
             this.setState({
@@ -118,6 +109,12 @@ class FileUpload extends React.Component<IFileUploadProps, IFileUploadState> {
             if (this.props.isAutoUpload) {
                 setTimeout(this.onUpload.bind(this));
             }
+        }
+    }
+
+    onDrop = (files) => {
+        if (!this.props.disabled) {
+            this.onFileSelected(files);
         }
     }
     
@@ -136,8 +133,6 @@ class FileUpload extends React.Component<IFileUploadProps, IFileUploadState> {
 
         return value.replace(/\s/g, '').length < 1;
     };
-
-    uploadRef: any;
 
     render() {
         const progress = `${this.state.progress || 0}%`;
@@ -194,7 +189,6 @@ class FileUpload extends React.Component<IFileUploadProps, IFileUploadState> {
         }
 
         const dropzoneProps: any = {
-            ref: this.uploadRef,
             multiple: this.props.multiple,
             className: 'dropzone',
         };
