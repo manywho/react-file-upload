@@ -1,6 +1,6 @@
 {
     "name": "@boomi/react-file-upload",
-    "version": "0.1.0",
+    "version": "0.3.0",
     "description": "A generic yet configurable react component for a functioning file uploader",
     "main": "dist/react-file-upload.js",
     "scripts": {
