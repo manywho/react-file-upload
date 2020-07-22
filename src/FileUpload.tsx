@@ -29,7 +29,6 @@ class FileUpload extends React.Component<IFileUploadProps, IFileUploadState> {
         };
     }
 
-
     onUpload = () => {
         if (this.state.fileNames.length > 0) {
             this.setState({
@@ -176,6 +175,10 @@ class FileUpload extends React.Component<IFileUploadProps, IFileUploadState> {
 
         const helpInfo = <span className="help-block">{this.props.helpInfo}</span>;
 
+        if (this.props.className) {
+            componentClassName += ` ${this.props.className}`;
+        }
+        
         if (this.props.isVisible === false) {
             componentClassName += ' hidden';
         }
