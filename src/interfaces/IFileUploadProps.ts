@@ -17,6 +17,7 @@ export interface IFileUploadState {
 
 export interface IFileUploadProps {
     id: string;
+    className: string;
     multiple: boolean;
     upload: Function;
     uploadCaption?: string;

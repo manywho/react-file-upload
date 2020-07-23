@@ -36,7 +36,7 @@ To contribute to this project you can submit a pull request.
 
 Then inside your own local project:
 * `npm link @boomi/react-file-upload`
-* And follow usage instructions decribed above
+* And follow usage instructions described above
 
 #### Running Jest tests
 
@@ -48,16 +48,19 @@ npm run test
 ### id: `string`
 This is a unique identifier for this component.
 
+### className: `string`
+Classes that will be applied to the upper-most div on the component.
+
 ### multiple: `boolean`
 This file upload component can accept single or multiple file uploads.
 If multiple is `true`, then multiple files will be able to be uploaded at a time.
 If multiple is `false`, then only one file can be uploaded at a time.
 
 ### upload: `Function`
-Function that performs the file upload
+Function that performs the file upload.
 
 ### uploadCaption (optional, default = "Upload"): `string`
-Caption on the upload button
+Caption on the upload button.
 
 ### uploadComplete (optional, default = null): `Function`
 Function to be called when an upload is completed.
@@ -76,25 +79,25 @@ If the file/s should be instantly uploaded after they are selected.
 If set to `false`, then an "Upload" button is needed to be pressed to confirm upload.
 
 ### label: `string`
-The text for the label on the upload component
+The text for the label on the upload component.
 
 ### isRequired: `boolean`
-If set to `true`, a red required star will appear on the component
+If set to `true`, a red required star will appear on the component.
 
 ### validationMessage: `string`
-A message to help users input correct information, only shown when there are no errors
+A message to help users input correct information, only shown when there are no errors.
 
 ### isVisible: `boolean`
-Whether the entire component is visible or not
+Whether the entire component is visible or not.
 
 ### isValid: `boolean`
-If the the objectData this component is holding is valid or not
+If this component should highlight red to represent a validation error.
 
 ### hintValue (optional, default = "Drag 'n' drop some files here, or click to select files"): `string`
-A basic string of text to be shown on the drop zone to prompt users to interact with the drop zone
+A basic string of text to be shown on the drop zone to prompt users to interact with the drop zone.
 
 ### helpInfo: `string`
-A permanent help message shown at the bottom of the component
+A permanent help message shown at the bottom of the component.
 
 ### disabled: `boolean`
-If the component is set to being disabled, then dropping files onto the drop zone and clicking the upload button will not function
+If the component is set to being disabled, then dropping files onto the drop zone and clicking the upload button will not function.
