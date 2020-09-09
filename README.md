@@ -56,13 +56,13 @@ This file upload component can accept single or multiple file uploads.
 If multiple is `true`, then multiple files will be able to be uploaded at a time.
 If multiple is `false`, then only one file can be uploaded at a time.
 
-### upload: `Function`
+### upload: `(files: File[], onProgress: ({ lengthComputable, loaded, total }) => void) => Promise<any>`
 Function that performs the file upload.
 
 ### uploadCaption (optional, default = "Upload"): `string`
 Caption on the upload button.
 
-### uploadComplete (optional, default = null): `Function`
+### uploadComplete (optional, default = null): `(response: any) => void`
 Function to be called when an upload is completed.
 This function is given the response from a successful upload made using the provided upload function.
 

@@ -3,6 +3,7 @@ import { shallow } from 'enzyme';
 import FileUpload from '../src/FileUpload';
 
 const props = {
+    className: '',
     id: '0',
     multiple: false,
     upload: jest.fn(() => Promise.resolve()),
@@ -14,7 +15,7 @@ const props = {
     getFileUploadMessage: jest.fn(),
     loggingFunction: jest.fn(),
     handleEvent: jest.fn(),
-    
+
     completedUpload: jest.fn(),
     fileDataRequest: 'fileDataRequest',
     isAutoUpload: false,
@@ -41,22 +42,22 @@ describe('File upload component behaviour', () => {
         const wrapper = shallow(<FileUpload {...props} />);
         expect(wrapper.length).toEqual(1);
     });
-    
+
     test('Test that onDrop and onFileSelected set state correctly with single file', () => {
         const wrapper = shallow(<FileUpload {...props} />);
 
         (wrapper as any).instance().onDrop(testfile);
-        
+
         expect(wrapper.state('files')).toEqual(testfile);
         expect(wrapper.state('fileNames')).toEqual([testfile[0].name]);
         expect(wrapper.state('isFileSelected')).toBeTruthy();
     });
-    
+
     test('Test that onDrop and onFileSelected set state correctly with multiple files', () => {
         const wrapper = shallow(<FileUpload {...props} />);
 
         (wrapper as any).instance().onDrop(testfiles);
-        
+
         expect(wrapper.state('files')).toEqual(testfiles);
         expect(wrapper.state('fileNames')).toEqual(testfiles.map(file => file.name));
         expect(wrapper.state('isFileSelected')).toBeTruthy();
@@ -83,15 +84,15 @@ describe('File upload component behaviour', () => {
             },
         );
     });
-    
+
     test('Test that upload doesn\'t trigger when no files are stored in state', () => {
         const mockUpload = jest.fn(() => Promise.resolve());
         props.upload = mockUpload;
         const wrapper = shallow(<FileUpload {...props} />);
-        
+
         wrapper.setState({ fileNames: [], files: [] });
         (wrapper as any).instance().onUpload();
-        
+
         expect(mockUpload).not.toHaveBeenCalled();
     });
 

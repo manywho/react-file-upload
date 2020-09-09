@@ -12,16 +12,16 @@ export interface IFileUploadState {
     fileNames?: string[];
     progress?: number;
     error?: any;
-    files?: any;
+    files?: File[];
 }
 
 export interface IFileUploadProps {
     id: string;
     className: string;
     multiple: boolean;
-    upload: Function;
+    upload: (files: File[], onProgress: ({ lengthComputable, loaded, total }) => void) => Promise<any>;
     uploadCaption?: string;
-    uploadComplete?: Function;
+    uploadComplete?: (response: any) => void;
     smallInputs?: boolean;
     isUploadVisible?: boolean;
     isAutoUpload: boolean;

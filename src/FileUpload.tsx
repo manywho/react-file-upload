@@ -1,5 +1,5 @@
 ﻿import * as React from 'react';
-import Dropzone from 'react-dropzone';
+import Dropzone, { DropzoneProps } from 'react-dropzone';
 import { IFileUploadProps, IFileUploadState, IFileStatus } from './interfaces/IFileUploadProps';
 
 class FileUpload extends React.Component<IFileUploadProps, IFileUploadState> {
@@ -43,7 +43,7 @@ class FileUpload extends React.Component<IFileUploadProps, IFileUploadState> {
                 files,
                 ({ lengthComputable, loaded, total }) => {
                     if (lengthComputable) {
-                        this.setState({ 
+                        this.setState({
                             progress: parseInt((loaded / total * 100).toString(), 10),
                         });
                     }
@@ -66,13 +66,13 @@ class FileUpload extends React.Component<IFileUploadProps, IFileUploadState> {
 
                 setTimeout(
                     () => {
-                        this.setState({ 
+                        this.setState({
                             isUploadComplete: false, isProgressVisible: false, progress: 100,
                         });
-                    }, 
+                    },
                     2000,
                 );
-                
+
                 if (this.props.uploadComplete) {
                     this.props.uploadComplete(response);
                 }
@@ -96,8 +96,8 @@ class FileUpload extends React.Component<IFileUploadProps, IFileUploadState> {
         }
         return null;
     }
-    
-    onFileSelected = (files) => {
+
+    onFileSelected = (files: File[]) => {
         if (!this.props.disabled) {
             this.setState({
                 files,
@@ -111,12 +111,12 @@ class FileUpload extends React.Component<IFileUploadProps, IFileUploadState> {
         }
     }
 
-    onDrop = (files) => {
+    onDrop = (files: File[]) => {
         if (!this.props.disabled) {
             this.onFileSelected(files);
         }
     }
-    
+
     /**
     * Check if a value is `null` or `undefined`
     */
@@ -135,7 +135,7 @@ class FileUpload extends React.Component<IFileUploadProps, IFileUploadState> {
 
     render() {
         const progress = `${this.state.progress || 0}%`;
-        
+
         let uploadClassName = 'btn btn-primary';
         let inputClassName = 'form-control filenames';
         let progressClassName = 'progress-bar';
@@ -146,7 +146,7 @@ class FileUpload extends React.Component<IFileUploadProps, IFileUploadState> {
             inputClassName += ' input-sm';
         }
 
-        if (!this.props.isUploadVisible) { 
+        if (!this.props.isUploadVisible) {
             uploadClassName += ' hidden';
         }
 
@@ -158,8 +158,8 @@ class FileUpload extends React.Component<IFileUploadProps, IFileUploadState> {
             <label>
                 {this.props.label}
                 {
-                    this.props.isRequired ? 
-                        <span className="input-required"> *</span> : 
+                    this.props.isRequired ?
+                        <span className="input-required"> *</span> :
                         null
                 }
             </label>
@@ -178,7 +178,7 @@ class FileUpload extends React.Component<IFileUploadProps, IFileUploadState> {
         if (this.props.className) {
             componentClassName += ` ${this.props.className}`;
         }
-        
+
         if (this.props.isVisible === false) {
             componentClassName += ' hidden';
         }
@@ -191,16 +191,16 @@ class FileUpload extends React.Component<IFileUploadProps, IFileUploadState> {
             validationMessage = <span className="has-error"><span className="help-block">{this.state.error}</span></span>;
         }
 
-        const dropzoneProps: any = {
+        const dropzoneProps: DropzoneProps = {
             multiple: this.props.multiple,
             className: 'dropzone',
         };
 
         const buttonProps: any = {
             className: uploadClassName,
-            disabled: 
-                this.state.isUploadDisabled || 
-                !this.state.isFileSelected || 
+            disabled:
+                this.state.isUploadDisabled ||
+                !this.state.isFileSelected ||
                 this.props.disabled,
         };
 
@@ -220,10 +220,10 @@ class FileUpload extends React.Component<IFileUploadProps, IFileUploadState> {
                     </Dropzone>
                     <div className={`input-group ${(this.props.isAutoUpload) ? 'hidden' : ''}`}>
                         <input
-                            type="text" 
-                            className={inputClassName} 
+                            type="text"
+                            className={inputClassName}
                             readOnly
-                            value={this.state.fileNames.join(' ')} 
+                            value={this.state.fileNames.join(' ')}
                         />
                         <span className="input-group-btn">
                             <button {...buttonProps}>{this.props.uploadCaption}</button>
